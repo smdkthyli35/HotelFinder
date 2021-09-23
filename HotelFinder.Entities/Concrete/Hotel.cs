@@ -13,9 +13,11 @@ namespace HotelFinder.Entities.Concrete
         public int Id { get; set; }
 
         [StringLength(50)]
+        [Required]
         public string Name { get; set; }
 
         [StringLength(50)]
+        [Required]
         public string City { get; set; }
     }
 }
