@@ -17,14 +17,14 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:HotelFinder.API.Controllers.HotelsController.Post(HotelFinder.Entities.Concrete.Hotel)">
+        <member name="M:HotelFinder.API.Controllers.HotelsController.CreateHotel(HotelFinder.Entities.Concrete.Hotel)">
             <summary>
             Create An Hotel
             </summary>
             <param name="hotel"></param>
             <returns></returns>
         </member>
-        <member name="M:HotelFinder.API.Controllers.HotelsController.Put(HotelFinder.Entities.Concrete.Hotel)">
+        <member name="M:HotelFinder.API.Controllers.HotelsController.UpdateHotel(HotelFinder.Entities.Concrete.Hotel)">
             <summary>
             Update the Hotel
             </summary>
