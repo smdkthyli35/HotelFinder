@@ -36,8 +36,9 @@ namespace HotelFinder.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet]
+        [Route("[action]/{id}")]
+        public IActionResult GetHotelById(int id)
         {
             var result = _hotelService.GetHotelById(id);
             if (result != null)
@@ -47,13 +48,27 @@ namespace HotelFinder.API.Controllers
             return NotFound();
         }
 
+        [HttpGet]
+        [Route("[action]/{name}")]
+        public IActionResult GetHotelByName(string name)
+        {
+            var hotel = _hotelService.GetHotelByName(name);
+            if (hotel != null)
+            {
+                return Ok(hotel);
+            }
+            return NotFound();
+            
+        }
+
         /// <summary>
         /// Create An Hotel
         /// </summary>
         /// <param name="hotel"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post([FromBody] Hotel hotel)
+        [Route("[action]")]
+        public IActionResult CreateHotel([FromBody] Hotel hotel)
         {
             var createdHotel = _hotelService.CreateHotel(hotel);
             return CreatedAtAction("Get", new { id = createdHotel.Id }, createdHotel);
@@ -65,7 +80,8 @@ namespace HotelFinder.API.Controllers
         /// <param name="hotel"></param>
         /// <returns></returns>
         [HttpPut]
-        public IActionResult Put([FromBody] Hotel hotel)
+        [Route("[action]")]
+        public IActionResult UpdateHotel([FromBody] Hotel hotel)
         {
             if (_hotelService.GetHotelById(hotel.Id) != null)
             {
@@ -78,7 +94,8 @@ namespace HotelFinder.API.Controllers
         /// Delete the Hotel
         /// </summary>
         /// <param name="id"></param>
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("[action]/{id}")]
         public IActionResult Delete(int id)
         {
 
@@ -88,7 +105,7 @@ namespace HotelFinder.API.Controllers
                 return Ok();
             }
             return NotFound();
-            
+
         }
     }
 }
